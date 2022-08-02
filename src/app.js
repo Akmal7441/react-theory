@@ -6,15 +6,18 @@ class App extends Component {
         cars: [
             {
                 name: "Mazda 4",
-                year: 2020
+                year: 2020,
+                color:'rgb(0,0,0)'
             },
             {
                 name: "Ford",
-                year: 2015
+                year: 2015,
+                color:'rgb(0,0,0)'
             },
             {
                 name: "Ferari",
-                year: 2022
+                year: 2022,
+                color:'rgb(0,0,0)'
             },
         ],
         title: 'React components',
@@ -54,6 +57,27 @@ class App extends Component {
         })
     }
 
+    rgbHandler =(idx)=> {
+        let cars = this.state.cars
+        const random=()=>Math.floor(Math.random()*256)
+        const color=`rgb(${random()},${random()},${random()})`
+        cars[idx].color=color
+        this.setState({
+            cars
+        })
+
+    }
+
+
+    deleteHandler = (idx)=> {
+        let cars = this.state.cars;
+        cars.splice(idx,1);
+         
+        this.setState({ 
+            cars
+        })
+    }
+
     render() {
         const appStyle = {
             textAlign: 'center',
@@ -69,6 +93,9 @@ class App extends Component {
                         idx={index}
                         name={car.name}
                         year={car.year}
+                        color={car.color}
+                        ondelete={()=>{this.deleteHandler(index)}}
+                        onrgbClick={()=>{this.rgbHandler(index)}}
                         onCarClick={this.carTitleHandler}
                         onChange={
                             () => { this.changeTitleCarsHandler(car.name) }

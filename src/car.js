@@ -1,5 +1,5 @@
 function Car(props) {
-    const carStyle = { boxShadow: '0 0 5px #ccc', display: 'inline-block', padding: '15px', margin: '5px', textAlign: 'center' }
+    const carStyle = { boxShadow: '0 0 5px #ccc', display: 'inline-block', padding: '15px', margin: '5px', textAlign: 'center',background:`${props.color}` }
 
     return (
         <div className="Car" style={carStyle}>
@@ -15,6 +15,8 @@ function Car(props) {
             />
             <br />
             <button onClick={props.onChange}>Change title</button>
+            <button className="btn btn-danger" onClick={props.ondelete}>Delete</button>
+            <button className="btn btn-success" onClick={props.onrgbClick}>RGB</button>
         </div >
     )
 }
